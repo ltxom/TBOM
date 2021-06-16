@@ -1,6 +1,6 @@
 {
-  "parent": "block/cube",
+  "parent": "minecraft:block/carpet",
   "textures": {
-    "all": "bindingofminecraft:blocks/basement_door_block"
+    "wool": "bindingofminecraft:blocks/basement_door_block"
   }
 }

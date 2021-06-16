@@ -69,7 +69,7 @@ public class TBOMMain extends ModXRegistration {
 
         @Override
         public ItemStack createIcon() {
-            return ItemInit.TEST_ITEM.get().getDefaultInstance();
+            return ItemInit.KEY_TO_BASEMENT_ITEM.get().getDefaultInstance();
         }
     }
 

@@ -2,11 +2,11 @@ package me.ltxom.bindingofmc.core.init;
 
 import me.ltxom.bindingofmc.TBOMMain;
 import me.ltxom.bindingofmc.common.blocks.BasementDoorBlock;
+import me.ltxom.bindingofmc.common.blocks.OpenedBasementDoorBlock;
 import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.SoundType;
 import net.minecraft.block.material.Material;
-import net.minecraft.block.material.MaterialColor;
 import net.minecraft.item.DyeColor;
 import net.minecraftforge.common.ToolType;
 import net.minecraftforge.fml.RegistryObject;
@@ -18,16 +18,19 @@ public class BlockInit {
             DeferredRegister.create(ForgeRegistries.BLOCKS,
                     TBOMMain.MODID);
 
-    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block",
-            () -> new Block(AbstractBlock.Properties.create(Material.IRON,
-                    MaterialColor.AIR).
-                    hardnessAndResistance(15f, 30f).
-                    harvestTool(ToolType.PICKAXE).
-                    harvestLevel(1).
-                    sound(SoundType.METAL).setRequiresTool()));
+//    public static final RegistryObject<Block> TEST_BLOCK = BLOCKS.register("test_block",
+//            () -> new Block(AbstractBlock.Properties.create(Material.IRON,
+//                    MaterialColor.AIR).
+//                    hardnessAndResistance(15f, 30f).
+//                    harvestTool(ToolType.PICKAXE).
+//                    harvestLevel(1).
+//                    sound(SoundType.METAL).setRequiresTool()));
 
     public static final RegistryObject<BasementDoorBlock> BASEMENT_DOOR_BLOCK_REGISTRY_OBJECT = BLOCKS.register("basement_door_block", () -> new
             BasementDoorBlock(DyeColor.WHITE,
-			AbstractBlock.Properties.create(Material.CARPET).sound(SoundType.WOOD)));
+            AbstractBlock.Properties.create(Material.CARPET).sound(SoundType.WOOD).hardnessAndResistance(0.1F).harvestTool(ToolType.AXE).harvestLevel(0)));
+    public static final RegistryObject<OpenedBasementDoorBlock> OPENED_BASEMENT_DOOR_BLOCK_REGISTRY_OBJECT = BLOCKS.register("opened_basement_door_block", () -> new
+            OpenedBasementDoorBlock(DyeColor.WHITE,
+            AbstractBlock.Properties.create(Material.CARPET).sound(SoundType.WOOD).hardnessAndResistance(0.1F).harvestTool(ToolType.AXE).harvestLevel(0)));
 
 }

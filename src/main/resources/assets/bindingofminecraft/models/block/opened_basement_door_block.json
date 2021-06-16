@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/carpet",
+  "textures": {
+    "wool": "bindingofminecraft:blocks/opened_basement_door_block"
+  }
+}
