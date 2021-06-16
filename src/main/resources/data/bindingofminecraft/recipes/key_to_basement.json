@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern":
+  [
+    "xxx",
+    " x ",
+    " x "
+  ],
+  "key":
+  {
+    "x":
+    {
+      "item": "bindingofminecraft:key_to_basement_piece_item"
+    }
+  },
+  "result":
+  {
+    "item": "bindingofminecraft:key_to_basement_item",
+    "count": 1
+  }
+}

@@ -1,6 +1,7 @@
 {
   "item.bindingofminecraft.thebindindofmc_test_item": "Green Apple",
   "item.bindingofminecraft.key_to_basement_item": "Basement Key",
+  "item.bindingofminecraft.key_to_basement_piece_item": "Basement Key Piece",
   "item.bindingofminecraft.special_item": "Special",
   "block.bindingofminecraft.test_block": "Test Block",
   "block.bindingofminecraft.basement_door_block": "Locked Basement Door",
@@ -8,6 +9,6 @@
   "tooltip.bindingofminecraft.special_item.test_tooltip": "Test Tooltips",
   "itemGroup.bindingofminecraft": "The Binding Of MC",
   "tooltip.bindingofminecraft.key_to_basement_item.tooltip": "A key that can used to open a chest to the basement.",
+  "tooltip.bindingofminecraft.key_to_basement_piece_item.tooltip": "A piece of key to the basement.",
   "message.bindingofminecraft.cannot_open_basement_door": "You need a key to open the door to the basement."
-
 }

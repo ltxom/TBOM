@@ -2,6 +2,7 @@ package me.ltxom.bindingofmc.core.init;
 
 import me.ltxom.bindingofmc.TBOMMain;
 import me.ltxom.bindingofmc.common.items.KeyToBasementItem;
+import me.ltxom.bindingofmc.common.items.KeyToBasementPieceItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.RegistryObject;
@@ -10,8 +11,8 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class ItemInit {
     public static final DeferredRegister<Item> ITEMS =
-			DeferredRegister.create(ForgeRegistries.ITEMS,
-            TBOMMain.MODID);
+            DeferredRegister.create(ForgeRegistries.ITEMS,
+                    TBOMMain.MODID);
 
 //	public static final RegistryObject<Item> TEST_ITEM = ITEMS.register
 //	("thebindindofmc_test_item",
@@ -22,10 +23,12 @@ public class ItemInit {
 //			() -> new SpecialItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
 
     public static final RegistryObject<KeyToBasementItem> KEY_TO_BASEMENT_ITEM =
-			ITEMS.register("key_to_basement_item",
-            () -> new KeyToBasementItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
+            ITEMS.register("key_to_basement_item",
+                    () -> new KeyToBasementItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
 
-
+    public static final RegistryObject<KeyToBasementPieceItem> KEY_TO_BASEMENT_PIECE_ITEM_REGISTRY_OBJECT =
+            ITEMS.register("key_to_basement_piece_item",
+                    () -> new KeyToBasementPieceItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
     // block items
 //	public static final RegistryObject<Item> TEST_BLOCK = ITEMS.register("test_block",
 //			() -> new BlockItem(BlockInit.TEST_BLOCK.get(), new Item.Properties().group

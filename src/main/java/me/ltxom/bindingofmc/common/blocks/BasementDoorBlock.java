@@ -1,5 +1,6 @@
 package me.ltxom.bindingofmc.common.blocks;
 
+import me.ltxom.bindingofmc.core.init.BlockInit;
 import me.ltxom.bindingofmc.core.init.ItemInit;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.CarpetBlock;
@@ -30,7 +31,8 @@ public class BasementDoorBlock extends CarpetBlock {
             ItemStack item = playerEntity.getHeldItem(hand);
             if (item.getItem().equals(ItemInit.KEY_TO_BASEMENT_ITEM.get().asItem())) {
                 item.setCount(item.getCount() - 1);
-                // TODO: change block to opened basement door
+                world.setBlockState(blockPos,
+                        BlockInit.OPENED_BASEMENT_DOOR_BLOCK_REGISTRY_OBJECT.get().getDefaultState());
             } else {
                 playerEntity.sendMessage(new TranslationTextComponent("message" +
                                 ".bindingofminecraft.cannot_open_basement_door"),
