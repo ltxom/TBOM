@@ -1,0 +1,6 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "all": "bindingofminecraft:blocks/basement_door_block"
+  }
+}

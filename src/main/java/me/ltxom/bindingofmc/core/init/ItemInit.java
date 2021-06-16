@@ -1,6 +1,7 @@
 package me.ltxom.bindingofmc.core.init;
 
 import me.ltxom.bindingofmc.TBOMMain;
+import me.ltxom.bindingofmc.common.items.KeyToBasementItem;
 import me.ltxom.bindingofmc.common.items.SpecialItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -17,6 +18,10 @@ public class ItemInit {
 
 	public static final RegistryObject<SpecialItem> SPECIAL_ITEM = ITEMS.register("special_item",
 			() -> new SpecialItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
+
+	public static final RegistryObject<KeyToBasementItem> KEY_TO_BASEMENT_ITEM = ITEMS.register("key_to_basement_item",
+			() -> new KeyToBasementItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
+
 
 	// block items
 	public static final RegistryObject<Item> TEST_BLOCK = ITEMS.register("test_block",
