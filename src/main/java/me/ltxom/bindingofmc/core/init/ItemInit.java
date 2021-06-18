@@ -3,6 +3,7 @@ package me.ltxom.bindingofmc.core.init;
 import me.ltxom.bindingofmc.TBOMMain;
 import me.ltxom.bindingofmc.common.items.KeyToBasementItem;
 import me.ltxom.bindingofmc.common.items.KeyToBasementPieceItem;
+import me.ltxom.bindingofmc.common.items.MotherKnifeItem;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.DefaultDispenseItemBehavior;
 import net.minecraft.dispenser.IBlockSource;
@@ -25,10 +26,10 @@ public class ItemInit {
 //	public static final RegistryObject<Item> TEST_ITEM = ITEMS.register
 //	("thebindindofmc_test_item",
 //			() -> new Item(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
-//
-//	public static final RegistryObject<SpecialItem> SPECIAL_ITEM = ITEMS.register
-//	("special_item",
-//			() -> new SpecialItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
+
+    public static final RegistryObject<MotherKnifeItem> MOTHER_KNIFE_ITEM = ITEMS.register
+            ("mother_knife_item",
+                    () -> new MotherKnifeItem(new Item.Properties().group(TBOMMain.ITEM_GROUP)));
 
     public static final RegistryObject<KeyToBasementItem> KEY_TO_BASEMENT_ITEM =
             ITEMS.register("key_to_basement_item",

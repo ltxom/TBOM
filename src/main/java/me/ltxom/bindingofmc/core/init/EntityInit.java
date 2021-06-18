@@ -16,7 +16,7 @@ public class EntityInit {
         MOTHER = register("mother",
                 EntityType.Builder.create(MotherEntity::new,
                         EntityClassification.MONSTER)
-                        .size(.5f, .5f));
+                        .size(1.3f, 2.4f).trackingRange(8));
 
         ForgeRegistries.ENTITIES.registerAll(MOTHER);
     }

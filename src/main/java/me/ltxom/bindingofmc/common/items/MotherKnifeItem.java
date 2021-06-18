@@ -21,8 +21,8 @@ import org.lwjgl.glfw.GLFW;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class SpecialItem extends Item {
-	public SpecialItem(Properties properties) {
+public class MotherKnifeItem extends Item {
+	public MotherKnifeItem(Properties properties) {
 		super(properties);
 	}
 
@@ -42,7 +42,7 @@ public class SpecialItem extends Item {
 							   ITooltipFlag flagIn) {
 		super.addInformation(stack, worldIn, tooltip, flagIn);
 		if (InputMappings.isKeyDown(Minecraft.getInstance().getMainWindow().getHandle(), GLFW.GLFW_KEY_LEFT_SHIFT)) {
-			tooltip.add(new TranslationTextComponent("tooltip.bindingofminecraft.special_item.test_tooltip"));
+			tooltip.add(new TranslationTextComponent("tooltip.bindingofminecraft.mother_knife_item.test_tooltip"));
 		}else{
 			tooltip.add(new StringTextComponent("Hold SHIFT for more info."));
 		}

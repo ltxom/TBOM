@@ -1,0 +1,10 @@
+{
+  "mother.hurt": {
+    "sounds": [
+      "bindingofminecraft:entity/mother/hurt1",
+      "bindingofminecraft:entity/mother/hurt2",
+      "bindingofminecraft:entity/mother/hurt3"
+    ],
+    "subtitle": "subtitles.bindingofminecraft.mother.hurt"
+  }
+}

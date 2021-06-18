@@ -1,12 +1,18 @@
 package me.ltxom.bindingofmc.common.entity.mother;
 
+import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.matrix.MatrixStack;
 import com.mojang.blaze3d.vertex.IVertexBuilder;
-import net.minecraft.client.renderer.entity.model.EntityModel;
+import net.minecraft.client.renderer.entity.model.SegmentedModel;
 import net.minecraft.client.renderer.model.ModelRenderer;
+import net.minecraft.util.math.MathHelper;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
-public class MotherModel extends EntityModel<MotherEntity> {
+@OnlyIn(Dist.CLIENT)
+public class MotherModel extends SegmentedModel<MotherEntity> {
     public MotherModel() {
+        super();
         textureWidth = 64;
         textureHeight = 64;
         body = new ModelRenderer(this);
@@ -17,11 +23,6 @@ public class MotherModel extends EntityModel<MotherEntity> {
         head = new ModelRenderer(this);
         head.setRotationPoint(0.0F, -15.0F, 0.0F);
         head.setTextureOffset(0, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F, 0.0F, true);
-
-        headwear = new ModelRenderer(this);
-        headwear.setRotationPoint(0.0F, -15.0F, 0.0F);
-        headwear.setTextureOffset(0, 0).addBox(-4.0F, 0.0F, -4.0F, 8.0F, 8.0F, 8.0F, -0.5F,
-                false);
 
         right_arm = new ModelRenderer(this);
         right_arm.setRotationPoint(5.0F, -13.0F, 0.0F);
@@ -46,7 +47,6 @@ public class MotherModel extends EntityModel<MotherEntity> {
 
     private final ModelRenderer body;
     private final ModelRenderer head;
-    private final ModelRenderer headwear;
     private final ModelRenderer right_arm;
     private final ModelRenderer left_arm;
     private final ModelRenderer right_leg;
@@ -55,7 +55,20 @@ public class MotherModel extends EntityModel<MotherEntity> {
     @Override
     public void setRotationAngles(MotherEntity entity, float limbSwing, float limbSwingAmount,
                                   float ageInTicks, float netHeadYaw, float headPitch) {
-        //previously the render function, render code was moved to a method below
+        this.head.rotateAngleY = netHeadYaw * 0.017453292F;
+        this.head.rotateAngleX = headPitch * 0.017453292F;
+        this.left_arm.rotateAngleX =
+                -1.0F * MathHelper.func_233021_e_(limbSwing, 5.0F) * limbSwingAmount;
+        this.right_arm.rotateAngleX =
+                1.0F * MathHelper.func_233021_e_(limbSwing, 5.0F) * limbSwingAmount;
+        this.left_arm.rotateAngleY = 0.0F;
+        this.right_arm.rotateAngleY = 0.0F;
+        this.left_leg.rotateAngleX =
+                -1.0F * MathHelper.func_233021_e_(limbSwing, 5.0F) * limbSwingAmount;
+        this.right_leg.rotateAngleX =
+                1.0F * MathHelper.func_233021_e_(limbSwing, 5.0F) * limbSwingAmount;
+        this.left_leg.rotateAngleY = 0.0F;
+        this.right_leg.rotateAngleY = 0.0F;
     }
 
     @Override
@@ -63,17 +76,20 @@ public class MotherModel extends EntityModel<MotherEntity> {
                        int packedOverlay, float red, float green, float blue, float alpha) {
         body.render(matrixStack, buffer, packedLight, packedOverlay);
         head.render(matrixStack, buffer, packedLight, packedOverlay);
-        headwear.render(matrixStack, buffer, packedLight, packedOverlay);
         right_arm.render(matrixStack, buffer, packedLight, packedOverlay);
         left_arm.render(matrixStack, buffer, packedLight, packedOverlay);
         right_leg.render(matrixStack, buffer, packedLight, packedOverlay);
         left_leg.render(matrixStack, buffer, packedLight, packedOverlay);
     }
 
-    public void setRotationAngle(ModelRenderer modelRenderer, float x, float y, float z) {
-        modelRenderer.rotateAngleX = x;
-        modelRenderer.rotateAngleY = y;
-        modelRenderer.rotateAngleZ = z;
+    @Override
+    public Iterable<ModelRenderer> getParts() {
+        return ImmutableList.of(this.head, this.body, this.left_arm, this.right_arm,
+                this.left_leg, this.right_leg);
+    }
+
+    public ModelRenderer getRightArm() {
+        return right_arm;
     }
 
 }

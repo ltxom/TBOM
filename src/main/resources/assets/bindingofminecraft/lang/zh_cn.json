@@ -3,7 +3,7 @@
   "item.bindingofminecraft.key_to_basement_item": "地下室钥匙",
   "item.bindingofminecraft.key_to_basement_piece_item": "地下室钥匙碎片",
   "item.bindingofminecraft.mother_spawn_egg": "生成 妈妈",
-  "item.bindingofminecraft.special_item": "Special",
+  "item.bindingofminecraft.mother_knife_item": "妈刀",
   "block.bindingofminecraft.test_block": "Test Block",
   "block.bindingofminecraft.basement_door_block": "上锁的地下室门",
   "block.bindingofminecraft.opened_basement_door_block": "地下室门",
@@ -11,5 +11,7 @@
   "itemGroup.bindingofminecraft": "MC的结合",
   "tooltip.bindingofminecraft.key_to_basement_item.tooltip": "通往地下室的钥匙。",
   "tooltip.bindingofminecraft.key_to_basement_piece_item.tooltip": "通往地下室的钥匙碎片。",
-  "message.bindingofminecraft.cannot_open_basement_door": "你需要通往地下室的钥匙。"
+  "message.bindingofminecraft.cannot_open_basement_door": "你需要通往地下室的钥匙。",
+  "subtitles.bindingofminecraft.mother.hurt": "妈妈受伤",
+  "entity.bindingofminecraft.mother": "妈妈"
 }

@@ -1,8 +1,12 @@
 package me.ltxom.bindingofmc.common.entity;
 
-import net.minecraft.entity.*;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ILivingEntityData;
+import net.minecraft.entity.MobEntity;
+import net.minecraft.entity.SpawnReason;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
 import net.minecraft.entity.ai.attributes.Attributes;
+import net.minecraft.entity.monster.MonsterEntity;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.text.ITextComponent;
@@ -13,7 +17,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.server.ServerBossInfo;
 import net.minecraftforge.fml.common.registry.IEntityAdditionalSpawnData;
 
-public class TBOMEntity extends CreatureEntity implements IEntityAdditionalSpawnData {
+public class TBOMEntity extends MonsterEntity implements IEntityAdditionalSpawnData {
 
     private final ServerBossInfo bossInfo = new ServerBossInfo(this.getDisplayName(),
             BossInfo.Color.PURPLE, BossInfo.Overlay.PROGRESS);

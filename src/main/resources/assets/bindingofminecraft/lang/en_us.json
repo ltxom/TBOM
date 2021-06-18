@@ -2,7 +2,7 @@
   "item.bindingofminecraft.thebindindofmc_test_item": "Green Apple",
   "item.bindingofminecraft.key_to_basement_item": "Basement Key",
   "item.bindingofminecraft.key_to_basement_piece_item": "Basement Key Piece",
-  "item.bindingofminecraft.special_item": "Special",
+  "item.bindingofminecraft.mother_knife_item": "Mother's Knife",
   "item.bindingofminecraft.mother_spawn_egg": "Mother Spawn Egg",
   "block.bindingofminecraft.test_block": "Test Block",
   "block.bindingofminecraft.basement_door_block": "Locked Basement Door",
@@ -11,5 +11,7 @@
   "itemGroup.bindingofminecraft": "The Binding Of MC",
   "tooltip.bindingofminecraft.key_to_basement_item.tooltip": "A key that can used to open a chest to the basement.",
   "tooltip.bindingofminecraft.key_to_basement_piece_item.tooltip": "A piece of key to the basement.",
-  "message.bindingofminecraft.cannot_open_basement_door": "You need a key to open the door to the basement."
+  "message.bindingofminecraft.cannot_open_basement_door": "You need a key to open the door to the basement.",
+  "subtitles.bindingofminecraft.mother.hurt": "Mother hurt",
+  "entity.bindingofminecraft.mother": "Mother"
 }
