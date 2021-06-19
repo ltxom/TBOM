@@ -1,18 +1,21 @@
 package me.ltxom.bindingofmc;
 
 import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
+import me.ltxom.bindingofmc.client.renderers.MotherRenderer;
 import me.ltxom.bindingofmc.common.config.ConfigHandler;
 import me.ltxom.bindingofmc.common.config.ConfigParser;
-import me.ltxom.bindingofmc.common.entity.mother.MotherRenderer;
+import me.ltxom.bindingofmc.common.dimension.TBOMBiomeProvider;
+import me.ltxom.bindingofmc.common.dimension.TBOMChunkGenerator;
 import me.ltxom.bindingofmc.common.util.TBOMPaths;
-import me.ltxom.bindingofmc.core.init.BlockInit;
-import me.ltxom.bindingofmc.core.init.EntityInit;
-import me.ltxom.bindingofmc.core.init.ItemInit;
-import me.ltxom.bindingofmc.core.init.SoundInit;
+import me.ltxom.bindingofmc.core.init.*;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.registry.Registry;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
@@ -65,7 +68,15 @@ public class TBOMMain extends ModXRegistration {
     }
 
     public void init(final FMLCommonSetupEvent event) {
-
+        SpawnInit.registerSpawnPlacementTypes();
+        event.enqueueWork(() -> {
+            Registry.register(Registry.CHUNK_GENERATOR_CODEC, new ResourceLocation(MODID,
+                            "chunkgen"),
+                    TBOMChunkGenerator.CODEC);
+            Registry.register(Registry.BIOME_PROVIDER_CODEC, new ResourceLocation(MODID,
+                            "biomes"),
+                    TBOMBiomeProvider.CODEC);
+        });
     }
 
     private void init(FMLLoadCompleteEvent event) {
@@ -85,6 +96,11 @@ public class TBOMMain extends ModXRegistration {
     @Override
     protected void clientSetup(FMLClientSetupEvent fmlClientSetupEvent) {
 
+    }
+
+    @SubscribeEvent
+    public void onBiomeLoading(BiomeLoadingEvent event) {
+        SpawnInit.onBiomeLoading(event);
     }
 
     public static class TheBindingOfMinecraftGroup extends ItemGroup {

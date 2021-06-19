@@ -1,0 +1,11 @@
+{
+  "type": "bindingofminecraft:tbomdim",
+  "generator": {
+    "type": "bindingofminecraft:chunkgen",
+    "settings": {
+      "base": 65,
+      "verticalvariance": 16,
+      "horizontalvariance": 10
+    }
+  }
+}

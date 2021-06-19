@@ -50,4 +50,5 @@ public class MotherEntity extends TBOMEntity {
     protected SoundEvent getHurtSound(DamageSource source) {
         return SoundInit.ENTITY_MOTHER_HURT.get();
     }
+
 }
