@@ -1,6 +1,7 @@
 package me.ltxom.bindingofmc;
 
 import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
+import me.ltxom.bindingofmc.client.renderers.BlueSpiderRenderer;
 import me.ltxom.bindingofmc.client.renderers.MotherRenderer;
 import me.ltxom.bindingofmc.common.config.ConfigHandler;
 import me.ltxom.bindingofmc.common.config.ConfigParser;
@@ -87,6 +88,8 @@ public class TBOMMain extends ModXRegistration {
     private void init(final FMLClientSetupEvent event) {
         RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOTHER,
                 MotherRenderer::new);
+        RenderingRegistry.registerEntityRenderingHandler(EntityInit.SPIDER,
+            BlueSpiderRenderer::new);
     }
 
     protected void setup(final FMLCommonSetupEvent event) {
