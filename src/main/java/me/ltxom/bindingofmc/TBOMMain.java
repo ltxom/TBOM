@@ -1,8 +1,6 @@
 package me.ltxom.bindingofmc;
 
 import io.github.noeppi_noeppi.libx.mod.registration.ModXRegistration;
-import me.ltxom.bindingofmc.client.renderers.BlueSpiderRenderer;
-import me.ltxom.bindingofmc.client.renderers.MotherRenderer;
 import me.ltxom.bindingofmc.common.config.ConfigHandler;
 import me.ltxom.bindingofmc.common.config.ConfigParser;
 import me.ltxom.bindingofmc.common.dimension.TBOMBiomeProvider;
@@ -18,7 +16,6 @@ import net.minecraftforge.event.world.BiomeLoadingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.ModLoadingContext;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -86,10 +83,7 @@ public class TBOMMain extends ModXRegistration {
     }
 
     private void init(final FMLClientSetupEvent event) {
-        RenderingRegistry.registerEntityRenderingHandler(EntityInit.MOTHER,
-                MotherRenderer::new);
-        RenderingRegistry.registerEntityRenderingHandler(EntityInit.SPIDER,
-            BlueSpiderRenderer::new);
+        RendererInit.init();
     }
 
     protected void setup(final FMLCommonSetupEvent event) {

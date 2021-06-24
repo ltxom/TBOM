@@ -1,4 +1,4 @@
-package me.ltxom.bindingofmc.common.entity.blueSpider;
+package me.ltxom.bindingofmc.common.entity.bluespider;
 import me.ltxom.bindingofmc.common.entity.TBOMEntity;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.ai.attributes.AttributeModifierMap;
