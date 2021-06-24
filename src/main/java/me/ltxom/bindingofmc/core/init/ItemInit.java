@@ -94,6 +94,10 @@ public class ItemInit {
             "mother_spawn_egg", () -> new SpawnEggItem(EntityInit.MOTHER, 0x47CC3B,
                     0xC03BCC, new Item.Properties().group(TBOMMain.ITEM_GROUP)));
 
+    public static final RegistryObject<SpawnEggItem> BLUE_SPIDER_SPAWN_EGG = ITEMS.register(
+        "blue_spider_spawn_egg", () -> new SpawnEggItem(EntityInit.SPIDER, 0x4FCC3B,
+            0xC03BCC, new Item.Properties().group(TBOMMain.ITEM_GROUP)));
+
     public static void initializeDispenserBehaviors() {
         // Copied from IDispenseItemBehavior
         DefaultDispenseItemBehavior defaultdispenseitembehavior =
