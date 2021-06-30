@@ -41,36 +41,49 @@ public class FloorSchema {
         return result;
     }
 
-    public void generate(RoomType roomType, boolean newBranch) {
-        while (true) {
-            if (newBranch) {
-                switch (direction) {
-                    case NORTH:
-                        direction = chooseRandomDirection(Direction.EAST, Direction.WEST);
-                        break;
-                    case SOUTH:
-                        direction = chooseRandomDirection(Direction.EAST, Direction.WEST);
-                        break;
-                    case EAST:
-                        direction = chooseRandomDirection(Direction.NORTH, Direction.SOUTH);
-                        break;
-                    case WEST:
-                        direction = chooseRandomDirection(Direction.NORTH, Direction.SOUTH);
-                        break;
-                }
-            }
+    public void generate(RoomType roomType, Branch branch) {
+        this.direction = branch.getDirection();
+        this.x = branch.getX();
+        this.y = branch.getY();
+        int[] newCoordinate = getNewCoordinate(direction);
+        if (getXYType(newCoordinate[0], newCoordinate[1]) == null) {
+            setXYType(newCoordinate[0], newCoordinate[1], roomType);
 
-            int[] newCoordinate = getNewCoordinate(direction);
-            if (getXYType(newCoordinate[0], newCoordinate[1]) == null) {
-                setXYType(newCoordinate[0], newCoordinate[1], roomType);
-
-                this.x = newCoordinate[0];
-                this.y = newCoordinate[1];
-                return;
-            } else {
-                newBranch = true;
-            }
+            this.x = newCoordinate[0];
+            this.y = newCoordinate[1];
+            branch.setX(this.x);
+            branch.setY(this.y);
+        } else {
+            branch.setX(branch.getX() + 1);
+            generate(roomType, branch);
         }
+    }
+
+    public Branch generateBranch(RoomType roomType) {
+        switch (direction) {
+            case NORTH:
+                direction = chooseRandomDirection(Direction.EAST, Direction.WEST);
+                break;
+            case SOUTH:
+                direction = chooseRandomDirection(Direction.EAST, Direction.WEST);
+                break;
+            case EAST:
+                direction = chooseRandomDirection(Direction.NORTH, Direction.SOUTH);
+                break;
+            case WEST:
+                direction = chooseRandomDirection(Direction.NORTH, Direction.SOUTH);
+                break;
+        }
+
+        int[] newCoordinate = getNewCoordinate(direction);
+        if (getXYType(newCoordinate[0], newCoordinate[1]) == null) {
+            setXYType(newCoordinate[0], newCoordinate[1], roomType);
+
+            this.x = newCoordinate[0];
+            this.y = newCoordinate[1];
+
+        }
+        return new Branch(this.x, this.y, direction);
     }
 
     private static Direction chooseRandomDirection(Direction d1, Direction d2, Direction d3) {

@@ -2,7 +2,9 @@ package me.ltxom.bindingofmc.core.floor;
 
 import me.ltxom.bindingofmc.core.room.RoomType;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public abstract class Floor {
@@ -10,11 +12,21 @@ public abstract class Floor {
     private Chapter chapter;
     private static Map<Chapter, Float> chapterIntegerMap = new HashMap<>();
 
+    public int getNumOfSpecialRooms() {
+        int sum = 0;
+        for (RoomType type : specialRoomMap.keySet()) {
+            sum += specialRoomMap.get(type);
+        }
+        return sum;
+    }
+
+    private Map<RoomType, Integer> specialRoomMap;
 
     static {
         chapterIntegerMap.put(Chapter.ONE, 1f);
         chapterIntegerMap.put(Chapter.ONE_HALF, 1.5f);
         chapterIntegerMap.put(Chapter.TWO, 2f);
+        chapterIntegerMap.put(Chapter.TWO_HALF, 2.5f);
         chapterIntegerMap.put(Chapter.THREE, 3f);
         chapterIntegerMap.put(Chapter.THREE_HALF, 3.5f);
         chapterIntegerMap.put(Chapter.FOUR, 4f);
@@ -25,9 +37,10 @@ public abstract class Floor {
 
     }
 
-    public Floor(String floorName, Chapter chapter) {
+    public Floor(String floorName, Chapter chapter, Map<RoomType, Integer> specialRoomMap) {
         this.floorName = floorName;
         this.chapter = chapter;
+        this.specialRoomMap = specialRoomMap;
     }
 
     public abstract FloorSchema generateFloorSchema();
@@ -38,22 +51,27 @@ public abstract class Floor {
 
     public static FloorSchema generateBaseSchema(int numOfRooms, int numOfBranches) {
         FloorSchema floorSchema = new FloorSchema();
+        List<Branch> branchList = new ArrayList<>();
         int curNumOfRooms = numOfRooms;
+        a:
         for (int i = 0; i < numOfBranches; i++) {
-            for (int j = 0; j < numOfRooms / numOfBranches; j++) {
-                floorSchema.generate(RoomType.NORMAL, false);
-                curNumOfRooms--;
-                if (curNumOfRooms == 0) {
-                    break;
-                }
-            }
-            floorSchema.generate(RoomType.NORMAL, true);
+            // new branch
+            branchList.add(floorSchema.generateBranch(RoomType.NORMAL));
             curNumOfRooms--;
-            if (curNumOfRooms == 0) {
+            if (curNumOfRooms == 1) {
+                floorSchema.generate(RoomType.BOSS, branchList.get(branchList.size() - 1));
                 break;
             }
-        }
 
+            for (int j = 0; j < numOfRooms / numOfBranches; j++) {
+                floorSchema.generate(RoomType.NORMAL, branchList.get((int) (Math.random() * branchList.size())));
+                curNumOfRooms--;
+                if (curNumOfRooms == 1) {
+                    floorSchema.generate(RoomType.BOSS, branchList.get(branchList.size() - 1));
+                    break a;
+                }
+            }
+        }
         return floorSchema;
     }
 
@@ -64,4 +82,6 @@ public abstract class Floor {
     public Chapter getChapter() {
         return chapter;
     }
+
+
 }
